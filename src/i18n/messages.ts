@@ -12,6 +12,10 @@ interface Messages {
   statusTitle: string;
   statusDescription: string;
   contactsTitle: string;
+  switchToLight: string;
+  switchToDark: string;
+  skipToContent: string;
+  contactAction: string;
 }
 
 export const messages = {
@@ -30,6 +34,10 @@ export const messages = {
     statusDescription:
       'Sto costruendo questo spazio per raccontare le mie esperienze, i miei progetti e quello che mi appassiona.',
     contactsTitle: 'Contatti',
+    switchToLight: 'Attiva tema chiaro',
+    switchToDark: 'Attiva tema scuro',
+    skipToContent: 'Vai al contenuto',
+    contactAction: 'Contattami',
   },
   en: {
     pageTitle: 'Marco Polato | Software developer',
@@ -46,5 +54,9 @@ export const messages = {
     statusDescription:
       "I'm building this space to share my experience, my projects and the things I enjoy.",
     contactsTitle: 'Contacts',
+    switchToLight: 'Switch to light theme',
+    switchToDark: 'Switch to dark theme',
+    skipToContent: 'Skip to content',
+    contactAction: 'Contact me',
   },
 } satisfies Record<Locale, Messages>;

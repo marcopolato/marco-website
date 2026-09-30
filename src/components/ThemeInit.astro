@@ -1,0 +1,16 @@
+<!-- Pure JavaScript: executed in head before the page is rendered. -->
+<script is:inline>
+  (() => {
+    let theme = 'dark';
+
+    try {
+      if (localStorage.getItem('marco-theme') === 'light') {
+        theme = 'light';
+      }
+    } catch (e) {
+      console.error('Error accessing localStorage for theme:', e);
+    }
+
+    document.documentElement.dataset.theme = theme;
+  })();
+</script>

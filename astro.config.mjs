@@ -1,4 +1,4 @@
-import { defineConfig } from 'astro/config';
+import { defineConfig, fontProviders } from 'astro/config';
 
 export default defineConfig({
   output: 'static',
@@ -10,4 +10,14 @@ export default defineConfig({
       prefixDefaultLocale: false,
     },
   },
+  fonts: [
+    {
+      name: 'Inter',
+      provider: fontProviders.fontsource(),
+      cssVariable: '--font-inter',
+      weights: [400, 500, 600, 700],
+      styles: ['normal'],
+      subsets: ['latin'],
+    },
+  ],
 });
