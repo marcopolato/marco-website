@@ -3,18 +3,28 @@
   "type": "module",
   "version": "0.0.1",
   "engines": {
-    "node": ">=22.12.0"
+    "node": "24.x"
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "check": "astro check",
+    "build": "astro check && astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "format": "prettier . --write",
+    "format:check": "prettier . --check"
   },
   "dependencies": {
     "astro": "^7.3.5"
   },
   "allowScripts": {
     "esbuild": true
+  },
+  "packageManager": "pnpm@10.34.6",
+  "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "prettier": "3.9.9",
+    "prettier-plugin-astro": "1.1.0",
+    "typescript": "^6.0.3"
   }
 }

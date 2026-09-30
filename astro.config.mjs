@@ -1,5 +1,13 @@
-// @ts-check
 import { defineConfig } from 'astro/config';
 
-// https://astro.build/config
-export default defineConfig({});
+export default defineConfig({
+  output: 'static',
+  trailingSlash: 'always',
+  i18n: {
+    locales: ['it', 'en'],
+    defaultLocale: 'it',
+    routing: {
+      prefixDefaultLocale: false,
+    },
+  },
+});

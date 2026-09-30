@@ -1,0 +1,95 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { messages, type Locale } from '../i18n/messages';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = messages[locale];
+---
+
+<BaseLayout locale={locale} title={t.pageTitle} description={t.pageDescription}>
+  <section>
+    <p class="role">{t.role}</p>
+    <h1>{t.heading}</h1>
+    <p class="introduction">{t.introduction}</p>
+  </section>
+
+  <section aria-labelledby="interests-heading">
+    <h2 id="interests-heading">{t.interestsTitle}</h2>
+
+    <ul>
+      {t.interests.map((interest) => (
+        <li>{interest}</li>
+      ))}
+    </ul>
+  </section>
+
+  <section aria-labelledby="contacts-title">
+    <h2 id="contacts-title">{t.contactsTitle}</h2>
+
+    <p>
+      <a href="mailto:marco.polato8@gmail.com">marco.polato8@gmail.com</a>
+    </p>
+
+    <p>
+      <a href="https://www.linkedin.com/in/marco-polato-it/">LinkedIn</a>
+    </p>
+  </section>
+
+  <aside>
+    <p class="status">{t.statusTitle}</p>
+    <p>{t.statusDescription}</p>
+  </aside>
+</BaseLayout>
+
+<style>
+  .role {
+    color: #c4b5fd;
+    font-weight: 600;
+  }
+
+  h1 {
+    margin-block: 0.5rem 1.5rem;
+    font-size: clamp(2.75rem, 8vw, 5rem);
+    line-height: 1.1;
+    letter-spacing: -0.04em;
+  }
+
+  .introduction {
+    max-width: 42rem;
+    color: #d4d1df;
+    font-size: 1.2rem;
+  }
+
+  section + section {
+    margin-top: 3rem;
+  }
+
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    padding: 0;
+    list-style: none;
+  }
+
+  li {
+    padding: 0.6rem 1rem;
+    border: 1px solid #514663;
+    border-radius: 999px;
+  }
+
+  aside {
+    max-width: 42rem;
+    margin-top: 4rem;
+    color: #d4d1df;
+  }
+
+  .status {
+    color: #c4b5fd;
+    font-weight: 700;
+  }
+</style>
