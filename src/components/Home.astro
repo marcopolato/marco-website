@@ -1,6 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { messages, type Locale } from '../i18n/messages';
+import { projects } from '../data/projects.ts';
+import ProjectCard from './ProjectCard.astro';
 
 interface Props {
   locale: Locale;
@@ -26,6 +28,18 @@ const t = messages[locale];
       >
         LinkedIn
       </a>
+    </div>
+  </section>
+
+  <section class="projects" aria-labelledby="projects-title">
+    <h2 id="projects-title">{t.projectsTitle}</h2>
+
+    <p class="projects__intro">{t.projectsDescription}</p>
+
+    <div class="projects__grid">
+      {projects.map((project) => (
+        <ProjectCard project={project} locale={locale} />
+      ))}
     </div>
   </section>
 
@@ -177,9 +191,30 @@ const t = messages[locale];
     overflow-wrap: anywhere;
   }
 
+  .projects {
+    margin-bottom: 3rem;
+  }
+
+  .projects__intro {
+    max-width: 42rem;
+    margin-top: 0.75rem;
+    color: var(--text-muted);
+  }
+
+  .projects__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+  }
+
   @media (min-width: 48rem) {
     .info-grid {
       grid-template-columns: 1fr 1fr;
+    }
+
+    .projects__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
   }
 </style>

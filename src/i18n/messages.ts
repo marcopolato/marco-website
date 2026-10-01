@@ -15,6 +15,13 @@ interface Messages {
   darkThemeLabel: string;
   skipToContent: string;
   contactAction: string;
+  projectsTitle: string;
+  projectsDescription: string;
+  projectRoleLabel: string;
+  projectInProgress: string;
+  projectCompleted: string;
+  viewProject: string;
+  viewCode: string;
 }
 
 export const messages = {
@@ -36,6 +43,14 @@ export const messages = {
     darkThemeLabel: 'Tema scuro',
     skipToContent: 'Vai al contenuto',
     contactAction: 'Contattami',
+    projectsTitle: 'Progetti',
+    projectsDescription:
+      'Una selezione dei progetti che a cui ho lavorato e a cui sto lavorando.',
+    projectRoleLabel: 'Il mio contributo',
+    projectInProgress: 'In sviluppo',
+    projectCompleted: 'Completato',
+    viewProject: 'Visita il sito',
+    viewCode: 'Codice sorgente',
   },
   en: {
     pageTitle: 'Marco Polato | Software developer',
@@ -55,5 +70,13 @@ export const messages = {
     darkThemeLabel: 'Dark theme',
     skipToContent: 'Skip to content',
     contactAction: 'Contact me',
+    projectsTitle: 'Projects',
+    projectsDescription:
+      'A selection of the projects I have worked on and am currently working on.',
+    projectRoleLabel: 'My contribution',
+    projectInProgress: 'In progress',
+    projectCompleted: 'Completed',
+    viewProject: 'Visit website',
+    viewCode: 'Source code',
   },
 } satisfies Record<Locale, Messages>;
