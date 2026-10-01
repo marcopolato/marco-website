@@ -2,6 +2,7 @@
 import Image from 'astro/components/Image.astro';
 import type { Project } from '../data/projects';
 import { messages, type Locale } from '../i18n/messages';
+import { getProjectUrl } from '../i18n/paths';
 
 interface Props {
   project: Project;
@@ -49,28 +50,32 @@ const statusLabel =
     ))}
   </ul>
 
-  {(project.demoUrl || project.repositoryUrl) && (
-    <div class="project-card__links">
-      {project.demoUrl && (
-        <a
-          href={project.demoUrl}
-          aria-label={`${t.viewProject}: ${project.title}`}
-        >
-          {t.viewProject}
-        </a>
-      )}
+  <div class="project-card__links">
+    <a
+      href={getProjectUrl(locale, project.slug)}
+      aria-label={`${t.viewProjectDetails}: ${project.title}`}
+    >
+      {t.viewProjectDetails}
+    </a>
+    {project.demoUrl && (
+      <a
+        href={project.demoUrl}
+        aria-label={`${t.viewProject}: ${project.title}`}
+      >
+        {t.viewProject}
+      </a>
+    )}
 
-      {project.repositoryUrl && (
-        <a
-          href={project.repositoryUrl}
-          aria-label={`${t.viewCode}: ${project.title}`}
-          target="_blank"
-        >
-          {t.viewCode}
-        </a>
-      )}
-    </div>
-  )}
+    {project.repositoryUrl && (
+      <a
+        href={project.repositoryUrl}
+        aria-label={`${t.viewCode}: ${project.title}`}
+        target="_blank"
+      >
+        {t.viewCode}
+      </a>
+    )}
+  </div>
 </article>
 
 <style>

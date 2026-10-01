@@ -11,9 +11,10 @@ interface Props {
   locale: Locale;
   title: string;
   description: string;
+  projectSlug?: string;
 }
 
-const { locale, title, description } = Astro.props;
+const { locale, title, description, projectSlug } = Astro.props;
 const t = messages[locale];
 ---
 
@@ -41,7 +42,7 @@ const t = messages[locale];
       </a>
 
       <div class="header-controls">
-        <LanguageMenu locale={locale} />
+        <LanguageMenu locale={locale} projectSlug={projectSlug} />
         <ThemeToggle locale={locale} />
       </div>
     </header>

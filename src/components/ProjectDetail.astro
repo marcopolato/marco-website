@@ -1,0 +1,213 @@
+---
+import { Image } from 'astro:assets';
+import type { Project } from '../data/projects';
+import { messages, type Locale } from '../i18n/messages';
+import { getHomeProjectsUrl } from '../i18n/paths';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+interface Props {
+  project: Project;
+  locale: Locale;
+}
+
+const { project, locale } = Astro.props;
+const content = project.content[locale];
+const t = messages[locale];
+const statusLabel =
+  project.status === 'in-progress' ? t.projectInProgress : t.projectCompleted;
+const sections = [
+  { id: 'activities', title: t.activitiesTitle, items: content.activities },
+  { id: 'learnings', title: t.learningsTitle, items: content.learnings },
+];
+---
+
+<BaseLayout
+  locale={locale}
+  title={`${project.title} | ${t.projectPageTitle}`}
+  description={content.description}
+  projectSlug={project.slug}
+>
+  <article class="project-detail" aria-labelledby="project-title">
+    <a href={getHomeProjectsUrl(locale)}>{t.backToProjects}</a>
+
+    <header class="project-intro">
+      <h1 id="project-title">{project.title}</h1>
+      <p>{content.description}</p>
+    </header>
+
+    {project.image && (
+      <Image
+        src={project.image.src}
+        alt={project.image.alt[locale]}
+        width={960}
+        layout="constrained"
+        fit="contain"
+        loading="eager"
+        class="project-cover"
+      />
+    )}
+
+    <dl class="project-facts">
+      <div>
+        <dt>{t.projectRoleLabel}</dt>
+        <dd>{content.role}</dd>
+      </div>
+      <div>
+        <dt>{t.technologiesLabel}</dt>
+        <dd>
+          <ul class="technologies">
+            {project.technologies.map((technology) => (
+              <li>{technology}</li>
+            ))}
+          </ul>
+        </dd>
+      </div>
+      <div>
+        <dt>{t.projectStatusLabel}</dt>
+        <dd>{statusLabel}</dd>
+      </div>
+    </dl>
+
+    <section aria-labelledby="objective">
+      <h2 id="objective">{t.objectiveTitle}</h2>
+      <p>{content.objective}</p>
+    </section>
+
+    {sections.map((section) => (
+      <section aria-labelledby={section.id}>
+        <h2 id={section.id}>{section.title}</h2>
+        <ul>
+          {section.items.map((item) => (
+            <li>{item}</li>
+          ))}
+        </ul>
+      </section>
+    ))}
+
+    {(project.demoUrl || project.repositoryUrl) && (
+      <nav class="project-links" aria-label={t.projectLinksLabel}>
+        {project.demoUrl && <a href={project.demoUrl}>{t.viewProject}</a>}
+        {project.repositoryUrl && (
+          <a
+            href={project.repositoryUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {t.viewCode}
+          </a>
+        )}
+      </nav>
+    )}
+  </article>
+</BaseLayout>
+
+<style>
+  .project-detail {
+    max-width: 60rem;
+    margin-inline: auto;
+    padding-block: clamp(2rem, 5vw, 4rem);
+    overflow-wrap: anywhere;
+  }
+
+  .project-intro {
+    margin-block: 2rem;
+  }
+
+  h1 {
+    font-size: clamp(2rem, 6vw, 4rem);
+    letter-spacing: -0.04em;
+  }
+
+  .project-intro p {
+    margin-top: 1.25rem;
+    font-size: clamp(1.125rem, 2vw, 1.375rem);
+  }
+
+  .project-cover {
+    display: block;
+    width: 100%;
+    height: auto;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--surface-muted);
+  }
+
+  .project-facts {
+    display: grid;
+    gap: 1.5rem;
+    margin-block: 2rem;
+    padding: clamp(1.25rem, 3vw, 2rem);
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--brand);
+    border-radius: var(--radius);
+    background: var(--surface);
+  }
+
+  dt {
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+  }
+
+  dd {
+    margin: 0;
+    color: var(--text-muted);
+  }
+
+  .technologies {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .technologies li {
+    padding: 0.25rem 0.625rem;
+    border: 1px solid var(--border);
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+  }
+
+  section {
+    max-width: 48rem;
+    margin-top: 2.5rem;
+  }
+
+  h2 {
+    font-size: clamp(1.375rem, 3vw, 1.75rem);
+    letter-spacing: -0.025em;
+  }
+
+  section p,
+  section ul {
+    margin-top: 1rem;
+  }
+
+  p,
+  section li {
+    color: var(--text-muted);
+  }
+
+  section ul {
+    padding-inline-start: 1.25rem;
+  }
+
+  section li + li {
+    margin-top: 0.75rem;
+  }
+
+  .project-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 2.5rem;
+    font-weight: 600;
+  }
+
+  @media (min-width: 48rem) {
+    .project-facts {
+      grid-template-columns: 2fr 2fr 1fr;
+    }
+  }
+</style>

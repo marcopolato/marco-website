@@ -1,12 +1,14 @@
 ---
 import { getRelativeLocaleUrl } from 'astro:i18n';
 import { messages, type Locale } from '../i18n/messages';
+import { getProjectUrl } from '../i18n/paths';
 
 interface Props {
   locale: Locale;
+  projectSlug?: string;
 }
 
-const { locale } = Astro.props;
+const { locale, projectSlug } = Astro.props;
 const t = messages[locale];
 
 const languages: { code: Locale; label: string }[] = [
@@ -43,7 +45,11 @@ const availableLanguages = languages.filter(
   <nav class="language-menu__panel" aria-label={t.languageLabel}>
     {availableLanguages.map((language) => (
       <a
-        href={getRelativeLocaleUrl(language.code)}
+        href={
+          projectSlug
+            ? getProjectUrl(language.code, projectSlug)
+            : getRelativeLocaleUrl(language.code)
+        }
         lang={language.code}
         hreflang={language.code}
       >
