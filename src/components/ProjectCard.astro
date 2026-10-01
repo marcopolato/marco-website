@@ -1,4 +1,5 @@
 ---
+import Image from 'astro/components/Image.astro';
 import type { Project } from '../data/projects';
 import { messages, type Locale } from '../i18n/messages';
 
@@ -18,6 +19,17 @@ const statusLabel =
 ---
 
 <article class="project-card" aria-labelledby={headingId}>
+  {project.image && (
+    <Image
+      src={project.image.src}
+      alt={project.image.alt[locale]}
+      width={960}
+      height={540}
+      layout="constrained"
+      class="project-card__image"
+    />
+  )}
+
   <p class="project-card__status">{statusLabel}</p>
 
   <h3 class="project-card__title" id={headingId}>
@@ -52,6 +64,7 @@ const statusLabel =
         <a
           href={project.repositoryUrl}
           aria-label={`${t.viewCode}: ${project.title}`}
+          target="_blank"
         >
           {t.viewCode}
         </a>
@@ -131,5 +144,16 @@ const statusLabel =
 
   .project-card__links a {
     font-weight: 600;
+  }
+
+  .project-card__image {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border-radius: 0.75rem;
+    background: var(--surface-muted);
   }
 </style>

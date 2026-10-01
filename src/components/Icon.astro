@@ -1,0 +1,29 @@
+---
+import { icons as tabler } from '@iconify-json/tabler';
+
+interface Props {
+  name: string;
+  size?: number;
+}
+
+const { name, size = 22 } = Astro.props;
+const icon = tabler.icons[name];
+
+if (!icon) {
+  throw new Error(`Table icon not found: ${name}`);
+}
+
+const width = icon.width ?? tabler.width ?? 24;
+const height = icon.height ?? tabler.height ?? 24;
+---
+
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width={size}
+  height={size}
+  viewBox={`0 0 ${width} ${height}`}
+  aria-hidden="true"
+  focusable="false"
+>
+  <Fragment set:html={icon.body} />
+</svg>

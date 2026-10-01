@@ -30,10 +30,10 @@ export const messages = {
     pageDescription:
       'Il portfolio di Marco: sviluppo software, coordinamento di progetti tech e passioni personali.',
     languageLabel: 'Seleziona la lingua',
-    role: 'Sviluppatore software',
+    role: 'Sviluppatore software · Coordinamento progetti tech',
     heading: 'Ciao, sono Marco.',
     introduction:
-      'Sviluppo software e sto ampliando le mie responsabilità verso il coordinamento e la gestione di progetti tech.',
+      'Sviluppo applicazioni web e mobile e, da gennaio 2026, coordino le attività di diversi team di sviluppatori. Lavoro con il cliente per trasformare i requisiti in task, sprint e priorità di sviluppo.',
     interestsTitle: 'Fuori dal lavoro',
     interests: ['Carte Pokémon', 'LEGO', 'Viaggi', 'Sport'],
     statusTitle: 'Work in progress',
@@ -57,10 +57,10 @@ export const messages = {
     pageDescription:
       "Marco's portfolio: software development, tech project coordination and personal interests.",
     languageLabel: 'Select language',
-    role: 'Software developer',
+    role: 'Software developer · Tech project coordination',
     heading: "Hi, I'm Marco.",
     introduction:
-      "I develop software and I'm expanding my responsibilities into coordinating and managing tech projects.",
+      'I develop web and mobile applications and, since January 2026, I coordinate the activities of developers teams. I work with the client to transform requirements into tasks, sprints, and development priorities.',
     interestsTitle: 'Outside of work',
     interests: ['Pokémon cards', 'LEGO', 'Travel', 'Sports'],
     statusTitle: 'Work in progress',
