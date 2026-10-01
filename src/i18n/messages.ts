@@ -22,6 +22,15 @@ interface Messages {
   projectCompleted: string;
   viewProject: string;
   viewCode: string;
+  viewProjectDetails: string;
+  backToProjects: string;
+  technologiesLabel: string;
+  projectStatusLabel: string;
+  objectiveTitle: string;
+  activitiesTitle: string;
+  learningsTitle: string;
+  projectLinksLabel: string;
+  projectPageTitle: string;
 }
 
 export const messages = {
@@ -51,6 +60,15 @@ export const messages = {
     projectCompleted: 'Completato',
     viewProject: 'Visita il sito',
     viewCode: 'Codice sorgente',
+    viewProjectDetails: 'Scopri il progetto',
+    backToProjects: 'Torna ai progetti',
+    technologiesLabel: 'Tecnologie',
+    projectStatusLabel: 'Stato',
+    objectiveTitle: 'Obiettivo',
+    activitiesTitle: 'Attività svolte e scelte tecniche',
+    learningsTitle: 'Cosa ho imparato',
+    projectLinksLabel: 'Collegamenti del progetto',
+    projectPageTitle: 'Dettaglio progetto',
   },
   en: {
     pageTitle: 'Marco Polato | Software developer',
@@ -78,5 +96,14 @@ export const messages = {
     projectCompleted: 'Completed',
     viewProject: 'Visit website',
     viewCode: 'Source code',
+    viewProjectDetails: 'View project details',
+    backToProjects: 'Back to projects',
+    technologiesLabel: 'Technologies',
+    projectStatusLabel: 'Status',
+    objectiveTitle: 'Objective',
+    activitiesTitle: 'Work done and technical decisions',
+    learningsTitle: 'What I learned',
+    projectLinksLabel: 'Project links',
+    projectPageTitle: 'Project details',
   },
 } satisfies Record<Locale, Messages>;
