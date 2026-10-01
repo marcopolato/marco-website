@@ -13,14 +13,35 @@ const t = messages[locale];
   id="theme-toggle"
   class="theme-toggle"
   type="button"
+  role="switch"
+  aria-label={t.darkThemeLabel}
+  aria-checked="true"
   data-theme-toggle
-  data-label-light={t.switchToLight}
-  data-label-dark={t.switchToDark}
-  aria-label={t.switchToLight}
-  title={t.switchToLight}
   hidden
 >
+  <span class="theme-toggle__thumb" aria-hidden="true"></span>
+
   <svg
+    class="theme-toggle__icon theme-toggle__sun"
+    width="20"
+    height="20"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="1.8"
+    stroke-linecap="round"
+    aria-hidden="true"
+  >
+    <circle cx="12" cy="12" r="4" />
+    <path
+      d="M12 2v2 M12 20v2 M2 12h2 M20 12h2
+         M5 5l1.5 1.5 M17.5 17.5 19 19
+         M5 19l1.5-1.5 M17.5 6.5 19 5"
+    />
+  </svg>
+
+  <svg
+    class="theme-toggle__icon theme-toggle__moon"
     width="20"
     height="20"
     viewBox="0 0 24 24"
@@ -31,17 +52,7 @@ const t = messages[locale];
     stroke-linejoin="round"
     aria-hidden="true"
   >
-    <g class="theme-toggle__sun">
-      <circle cx="12" cy="12" r="4" />
-      <path
-        d="M12 2v2 M12 20v2 M2 12h2 M20 12h2
-           M5 5l1.5 1.5 M17.5 17.5 19 19
-           M5 19l1.5-1.5 M17.5 6.5 19 5"
-      />
-    </g>
-
     <path
-      class="theme-toggle__moon"
       d="M20.5 13A8.5 8.5 0 0 1 11 3.5
          8.5 8.5 0 1 0 20.5 13Z"
     />
@@ -56,12 +67,7 @@ const t = messages[locale];
     const isDarkTheme = root.dataset.theme !== 'light';
 
     if (themeToggleButton) {
-      const label = isDarkTheme
-        ? (themeToggleButton.dataset.labelLight ?? '')
-        : (themeToggleButton.dataset.labelDark ?? '');
-
-      themeToggleButton.setAttribute('aria-label', label);
-      themeToggleButton.title = label;
+      themeToggleButton.setAttribute('aria-checked', String(isDarkTheme));
     }
   }
 
@@ -88,33 +94,59 @@ const t = messages[locale];
 
 <style>
   .theme-toggle {
+    position: relative;
     display: grid;
-    place-items: center;
+    grid-template-columns: repeat(2, 2rem);
+    align-items: center;
+    justify-items: center;
+    gap: 0.375rem;
     flex-shrink: 0;
-    width: 2.75rem;
+    width: 5.25rem;
     height: 2.75rem;
-    padding: 0;
-    border: 1px solid transparent;
-    border-radius: 50%;
-    background: transparent;
+    padding: 0.375rem;
+    border: 1px solid var(--control-border);
+    border-radius: 999px;
+    background: var(--surface);
     color: var(--text-muted);
     cursor: pointer;
   }
 
   .theme-toggle:hover {
-    background: var(--surface);
-    color: var(--accent-text);
+    border-color: var(--accent-text);
   }
 
-  .theme-toggle__moon {
-    display: none;
+  .theme-toggle__thumb {
+    position: absolute;
+    top: 0.3125rem;
+    left: 0.375rem;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background: var(--brand);
+    pointer-events: none;
   }
 
-  :global([data-theme='light']) .theme-toggle__sun {
-    display: none;
+  .theme-toggle__icon {
+    position: relative;
+    z-index: 1;
   }
 
-  :global([data-theme='light']) .theme-toggle__moon {
-    display: inline;
+  .theme-toggle[aria-checked='true'] .theme-toggle__thumb {
+    transform: translateX(2.375rem);
+  }
+
+  .theme-toggle[aria-checked='false'] .theme-toggle__sun,
+  .theme-toggle[aria-checked='true'] .theme-toggle__moon {
+    color: var(--on-brand);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .theme-toggle__thumb {
+      transition: transform 220ms ease-in-out;
+    }
+
+    .theme-toggle__icon {
+      transition: color 220ms ease-in-out;
+    }
   }
 </style>

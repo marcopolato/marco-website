@@ -1,0 +1,147 @@
+---
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import { messages, type Locale } from '../i18n/messages';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = messages[locale];
+
+const languages: { code: Locale; label: string }[] = [
+  { code: 'it', label: '🇮🇹 Italiano' },
+  { code: 'en', label: '🇬🇧 English' },
+];
+
+const availableLanguages = languages.filter(
+  (language) => language.code !== locale,
+);
+---
+
+<details class="language-menu" data-language-menu>
+  <summary aria-label={`${t.languageLabel}: ${locale.toUpperCase()}`}>
+    <span aria-hidden="true">{locale === 'it' ? '🇮🇹' : '🇬🇧'}</span>
+    <span>{locale.toUpperCase()}</span>
+
+    <svg
+      class="language-menu__chevron"
+      width="14"
+      height="14"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      aria-hidden="true"
+    >
+      <path d="m6 9 6 6 6-6" />
+    </svg>
+  </summary>
+
+  <nav class="language-menu__panel" aria-label={t.languageLabel}>
+    {availableLanguages.map((language) => (
+      <a
+        href={getRelativeLocaleUrl(language.code)}
+        lang={language.code}
+        hreflang={language.code}
+      >
+        {language.label}
+      </a>
+    ))}
+  </nav>
+</details>
+
+<script>
+  const menus = document.querySelectorAll<HTMLDetailsElement>(
+    '[data-language-menu]',
+  );
+
+  menus.forEach((menu) => {
+    const summary = menu.querySelector('summary');
+
+    // Close the menu when clicking outside it
+    document.addEventListener('click', (event) => {
+      if (event.target instanceof Node && !menu.contains(event.target)) {
+        menu.open = false;
+      }
+    });
+
+    menu.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && menu.open) {
+        event.preventDefault();
+        menu.open = false;
+        summary?.focus();
+      }
+    });
+  });
+</script>
+
+<style>
+  .language-menu {
+    position: relative;
+  }
+
+  summary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-height: 2.75rem;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid var(--control-border);
+    border-radius: 999px;
+    background: var(--surface);
+    color: var(--text);
+    font-size: 0.875rem;
+    font-weight: 600;
+    list-style: none;
+    cursor: pointer;
+  }
+
+  summary::-webkit-details-marker {
+    display: none;
+  }
+
+  summary:hover {
+    border-color: var(--accent-text);
+  }
+
+  .language-menu[open] .language-menu__chevron {
+    transform: rotate(180deg);
+  }
+
+  .language-menu__panel {
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    inset-inline-start: 0;
+    z-index: 20;
+    min-width: 9rem;
+    padding: 0.375rem;
+    border: 1px solid var(--border);
+    border-radius: 0.75rem;
+    background: var(--surface);
+    box-shadow: 0 0.75rem 2rem rgb(0 0 0 / 0.18);
+  }
+
+  .language-menu__panel a {
+    display: flex;
+    align-items: center;
+    min-height: 2.75rem;
+    padding-inline: 0.75rem;
+    border-radius: 0.5rem;
+    color: var(--text);
+    text-decoration: none;
+  }
+
+  .language-menu__panel a:hover,
+  .language-menu__panel a:focus-visible {
+    background: var(--surface-muted);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .language-menu__chevron {
+      transition: transform 180ms ease-in-out;
+    }
+  }
+</style>

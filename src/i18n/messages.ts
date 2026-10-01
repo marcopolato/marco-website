@@ -12,8 +12,7 @@ interface Messages {
   statusTitle: string;
   statusDescription: string;
   contactsTitle: string;
-  switchToLight: string;
-  switchToDark: string;
+  darkThemeLabel: string;
   skipToContent: string;
   contactAction: string;
 }
@@ -34,8 +33,7 @@ export const messages = {
     statusDescription:
       'Sto costruendo questo spazio per raccontare le mie esperienze, i miei progetti e quello che mi appassiona.',
     contactsTitle: 'Contatti',
-    switchToLight: 'Attiva tema chiaro',
-    switchToDark: 'Attiva tema scuro',
+    darkThemeLabel: 'Tema scuro',
     skipToContent: 'Vai al contenuto',
     contactAction: 'Contattami',
   },
@@ -54,8 +52,7 @@ export const messages = {
     statusDescription:
       "I'm building this space to share my experience, my projects and the things I enjoy.",
     contactsTitle: 'Contacts',
-    switchToLight: 'Switch to light theme',
-    switchToDark: 'Switch to dark theme',
+    darkThemeLabel: 'Dark theme',
     skipToContent: 'Skip to content',
     contactAction: 'Contact me',
   },
