@@ -1,12 +1,11 @@
 ---
-import { getRelativeLocaleUrl } from 'astro:i18n';
 import { Font } from 'astro:assets';
 import { messages, type Locale } from '../i18n/messages';
 import ThemeInit from '../components/ThemeInit.astro';
 import ThemeToggle from '../components/ThemeToggle.astro';
 import '../styles/global.css';
 import LanguageMenu from '../components/LanguageMenu.astro';
-import { getHomeExperienceUrl, getHomeProjectsUrl } from '../i18n/paths';
+import { getPageUrl, getHomeContactsUrl, type PageName } from '../i18n/paths';
 
 interface Props {
   locale: Locale;
@@ -17,6 +16,36 @@ interface Props {
 
 const { locale, title, description, projectSlug } = Astro.props;
 const t = messages[locale];
+const pages = [
+  {
+    name: 'home',
+    label: t.homeNavLabel,
+    href: getPageUrl(locale, 'home'),
+  },
+  {
+    name: 'experience',
+    label: t.experienceNavLabel,
+    href: getPageUrl(locale, 'experience'),
+  },
+  {
+    name: 'projects',
+    label: t.projectsTitle,
+    href: getPageUrl(locale, 'projects'),
+  },
+] satisfies {
+  name: PageName;
+  label: string;
+  href: string;
+}[];
+
+const pathname = Astro.url.pathname.endsWith('/')
+  ? Astro.url.pathname
+  : `${Astro.url.pathname}/`;
+
+const currentPage = pages.find((item) => item.href === pathname)?.name;
+
+const activePageName: PageName | undefined =
+  projectSlug !== undefined ? 'projects' : currentPage;
 ---
 
 <!doctype html>
@@ -37,24 +66,33 @@ const t = messages[locale];
       {t.skipToContent}
     </a>
     <header class="site-header container">
-      <a class="brand" href={getRelativeLocaleUrl(locale)}>
+      <a class="brand" href={getPageUrl(locale, 'home')}>
         <span class="brand__mark" aria-hidden="true"></span>
         Marco Polato
       </a>
 
       <nav class="site-nav" aria-label={t.navigationLabel}>
         <ul>
-          <li>
-            <a href={getHomeExperienceUrl(locale)}>{t.experienceNavLabel}</a>
-          </li>
-          <li>
-            <a href={getHomeProjectsUrl(locale)}>{t.projectsTitle}</a>
-          </li>
+          {pages.map((page) => (
+            <li>
+              <a
+                href={page.href}
+                class:list={[{ 'is-active': page.name === activePageName }]}
+                aria-current={page.href === pathname ? 'page' : undefined}
+              >
+                {page.label}
+              </a>
+            </li>
+          ))}
         </ul>
       </nav>
 
       <div class="header-controls">
-        <LanguageMenu locale={locale} projectSlug={projectSlug} />
+        <LanguageMenu
+          locale={locale}
+          projectSlug={projectSlug}
+          pageName={activePageName ?? 'home'}
+        />
         <ThemeToggle locale={locale} />
       </div>
     </header>
@@ -65,6 +103,7 @@ const t = messages[locale];
 
     <footer class="site-footer container">
       <p>© {new Date().getFullYear()} Marco Polato</p>
+      <a href={getHomeContactsUrl(locale)}>{t.contactAction}</a>
     </footer>
   </body>
 </html>
@@ -137,11 +176,22 @@ const t = messages[locale];
     color: var(--accent-text);
   }
 
+  .site-nav a.is-active {
+    background: var(--surface-muted);
+    color: var(--accent-text);
+    font-weight: 700;
+  }
+
   .site-footer {
     margin-top: 4rem;
     padding-block: 2rem;
     color: var(--text-muted);
     font-size: 0.875rem;
+  }
+
+  .site-footer a {
+    display: inline-block;
+    margin-top: 0.75rem;
   }
 
   @media (max-width: 35rem) {

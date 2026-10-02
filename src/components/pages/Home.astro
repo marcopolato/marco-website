@@ -1,10 +1,7 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import { messages, type Locale } from '../i18n/messages';
-import { projects } from '../data/projects.ts';
-import ProjectCard from './ProjectCard.astro';
-import ContactLinks from './ContactLinks.astro';
-import ExperienceSection from './ExperienceSection.astro';
+import { messages, type Locale } from '../../i18n/messages.ts';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ContactLinks from '../ContactLinks.astro';
 
 interface Props {
   locale: Locale;
@@ -14,25 +11,15 @@ const { locale } = Astro.props;
 const t = messages[locale];
 ---
 
-<BaseLayout locale={locale} title={t.pageTitle} description={t.pageDescription}>
+<BaseLayout
+  locale={locale}
+  title={t.pageTitle}
+  description={t.pageMetaContentDescription}
+>
   <section class="hero" aria-labelledby="intro-title">
     <p class="eyebrow">{t.role}</p>
     <h1 id="intro-title">{t.heading}</h1>
     <p class="introduction">{t.introduction}</p>
-  </section>
-
-  <ExperienceSection locale={locale} />
-
-  <section class="projects" id="projects" aria-labelledby="projects-title">
-    <h2 id="projects-title">{t.projectsTitle}</h2>
-
-    <p class="projects__intro">{t.projectsDescription}</p>
-
-    <div class="projects__grid">
-      {projects.map((project) => (
-        <ProjectCard project={project} locale={locale} />
-      ))}
-    </div>
   </section>
 
   <div class="info-grid">
@@ -51,7 +38,7 @@ const t = messages[locale];
     </aside>
   </div>
 
-  <section class="contacts" aria-labelledby="contacts-title">
+  <section class="contacts" id="contacts" aria-labelledby="contacts-title">
     <h2 id="contacts-title">{t.contactsTitle}</h2>
     <ContactLinks locale={locale} />
   </section>
@@ -101,7 +88,7 @@ const t = messages[locale];
     justify-content: center;
     min-height: 3rem;
     padding: 0.75rem 1.25rem;
-    border: 1px solid var(--control-border);
+    border: 1px solid var(--border);
     border-radius: 999px;
     font-weight: 600;
     text-decoration: none;
@@ -172,30 +159,9 @@ const t = messages[locale];
     border-top: 1px solid var(--border);
   }
 
-  .projects {
-    margin-bottom: 3rem;
-  }
-
-  .projects__intro {
-    max-width: 42rem;
-    margin-top: 0.75rem;
-    color: var(--text-muted);
-  }
-
-  .projects__grid {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr);
-    gap: 1.5rem;
-    margin-top: 1.5rem;
-  }
-
   @media (min-width: 48rem) {
     .info-grid {
       grid-template-columns: 1fr 1fr;
-    }
-
-    .projects__grid {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
   }
 </style>
