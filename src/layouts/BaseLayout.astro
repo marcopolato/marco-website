@@ -6,6 +6,7 @@ import ThemeInit from '../components/ThemeInit.astro';
 import ThemeToggle from '../components/ThemeToggle.astro';
 import '../styles/global.css';
 import LanguageMenu from '../components/LanguageMenu.astro';
+import { getHomeExperienceUrl, getHomeProjectsUrl } from '../i18n/paths';
 
 interface Props {
   locale: Locale;
@@ -40,6 +41,17 @@ const t = messages[locale];
         <span class="brand__mark" aria-hidden="true"></span>
         Marco Polato
       </a>
+
+      <nav class="site-nav" aria-label={t.navigationLabel}>
+        <ul>
+          <li>
+            <a href={getHomeExperienceUrl(locale)}>{t.experienceNavLabel}</a>
+          </li>
+          <li>
+            <a href={getHomeProjectsUrl(locale)}>{t.projectsTitle}</a>
+          </li>
+        </ul>
+      </nav>
 
       <div class="header-controls">
         <LanguageMenu locale={locale} projectSlug={projectSlug} />
@@ -91,6 +103,40 @@ const t = messages[locale];
     gap: 0.75rem;
   }
 
+  .site-nav {
+    width: 100%;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--surface);
+  }
+
+  .site-nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+    margin: 0;
+    padding: 0.25rem;
+    list-style: none;
+  }
+
+  .site-nav a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.75rem;
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius);
+    color: var(--text);
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .site-nav a:hover,
+  .site-nav a:focus-visible {
+    background: var(--surface-muted);
+    color: var(--accent-text);
+  }
+
   .site-footer {
     margin-top: 4rem;
     padding-block: 2rem;
@@ -107,6 +153,13 @@ const t = messages[locale];
     .header-controls {
       width: 100%;
       justify-content: flex-start;
+    }
+  }
+
+  @media (min-width: 48rem) {
+    .site-nav {
+      width: auto;
+      border-radius: 999px;
     }
   }
 </style>

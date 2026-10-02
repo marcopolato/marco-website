@@ -9,3 +9,7 @@ export function getProjectUrl(locale: Locale, slug: string): string {
 export function getHomeProjectsUrl(locale: Locale): string {
   return `${getRelativeLocaleUrl(locale)}#projects`;
 }
+
+export function getHomeExperienceUrl(locale: Locale): string {
+  return `${getRelativeLocaleUrl(locale)}#experience`;
+}

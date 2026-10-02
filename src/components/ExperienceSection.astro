@@ -1,0 +1,71 @@
+---
+import { education, professionalExperience } from '../data/experience';
+import { messages, type Locale } from '../i18n/messages';
+import ExperienceItem from './ExperienceItem.astro';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = messages[locale];
+---
+
+<section class="experience" id="experience" aria-labelledby="experience-title">
+  <h2 id="experience-title">{t.experienceTitle}</h2>
+
+  <div class="experience__group">
+    <h3 id="professional-experience-title">{t.professionalExperienceTitle}</h3>
+    <ol
+      class="timeline"
+      role="list"
+      aria-labelledby="professional-experience-title"
+    >
+      {professionalExperience.map((item) => (
+        <ExperienceItem item={item} locale={locale} />
+      ))}
+    </ol>
+  </div>
+
+  <div class="experience__group">
+    <h3 id="education-title">{t.educationTitle}</h3>
+    <ol class="timeline" role="list" aria-labelledby="education-title">
+      {education.map((item) => (
+        <ExperienceItem item={item} locale={locale} />
+      ))}
+    </ol>
+  </div>
+</section>
+
+<style>
+  .experience {
+    margin-bottom: 3rem;
+    scroll-margin-top: 2rem;
+  }
+
+  h2 {
+    font-size: clamp(1.375rem, 3vw, 1.75rem);
+    font-weight: 600;
+    letter-spacing: -0.025em;
+  }
+
+  .experience__group {
+    margin-top: 2rem;
+  }
+
+  h3 {
+    margin: 0 0 1.25rem;
+    color: var(--text-muted);
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.4;
+  }
+
+  .timeline {
+    display: grid;
+    gap: 1.25rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+</style>

@@ -4,6 +4,7 @@ import { messages, type Locale } from '../i18n/messages';
 import { projects } from '../data/projects.ts';
 import ProjectCard from './ProjectCard.astro';
 import ContactLinks from './ContactLinks.astro';
+import ExperienceSection from './ExperienceSection.astro';
 
 interface Props {
   locale: Locale;
@@ -20,6 +21,8 @@ const t = messages[locale];
     <p class="introduction">{t.introduction}</p>
   </section>
 
+  <ExperienceSection locale={locale} />
+
   <section class="projects" id="projects" aria-labelledby="projects-title">
     <h2 id="projects-title">{t.projectsTitle}</h2>
 
@@ -33,7 +36,7 @@ const t = messages[locale];
   </section>
 
   <div class="info-grid">
-    <section class="panel" aria-labelledby="interests-heading">
+    <section class="panel" aria-labelledby="interests-title">
       <h2 id="interests-title">{t.interestsTitle}</h2>
       <ul class="interests">
         {t.interests.map((interest) => (

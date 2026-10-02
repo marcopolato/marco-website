@@ -31,6 +31,15 @@ interface Messages {
   learningsTitle: string;
   projectLinksLabel: string;
   projectPageTitle: string;
+  navigationLabel: string;
+  experienceNavLabel: string;
+  experienceTitle: string;
+  professionalExperienceTitle: string;
+  educationTitle: string;
+  experiencePresent: string;
+  experienceCurrent: string;
+  educationInProgress: string;
+  coordinatorSinceLabel: string;
 }
 
 export const messages = {
@@ -42,7 +51,7 @@ export const messages = {
     role: 'Sviluppatore software · Coordinamento progetti tech',
     heading: 'Ciao, sono Marco.',
     introduction:
-      'Sviluppo applicazioni web e mobile e, da gennaio 2026, coordino le attività di diversi team di sviluppatori. Lavoro con il cliente per trasformare i requisiti in task, sprint e priorità di sviluppo.',
+      'Sviluppo applicazioni web e mobile e, da gennaio 2026, coordino le attività di un team di due sviluppatori. Lavoro con il cliente per trasformare i requisiti in task, sprint e priorità di sviluppo.',
     interestsTitle: 'Fuori dal lavoro',
     interests: ['Carte Pokémon', 'LEGO', 'Viaggi', 'Sport'],
     statusTitle: 'Work in progress',
@@ -69,6 +78,15 @@ export const messages = {
     learningsTitle: 'Cosa ho imparato',
     projectLinksLabel: 'Collegamenti del progetto',
     projectPageTitle: 'Dettaglio progetto',
+    navigationLabel: 'Navigazione principale',
+    experienceNavLabel: 'Esperienza',
+    experienceTitle: 'Esperienza e percorso',
+    professionalExperienceTitle: 'Esperienza professionale',
+    educationTitle: 'Formazione e crescita',
+    experiencePresent: 'presente',
+    experienceCurrent: 'Attuale',
+    educationInProgress: 'In corso',
+    coordinatorSinceLabel: 'Responsabilità di coordinamento da',
   },
   en: {
     pageTitle: 'Marco Polato | Software developer',
@@ -78,7 +96,7 @@ export const messages = {
     role: 'Software developer · Tech project coordination',
     heading: "Hi, I'm Marco.",
     introduction:
-      'I develop web and mobile applications and, since January 2026, I coordinate the activities of developers teams. I work with the client to transform requirements into tasks, sprints, and development priorities.',
+      'I develop web and mobile applications and, since January 2026, I have coordinated the activities of a team of two developers. I work with the client to transform requirements into tasks, sprints and development priorities.',
     interestsTitle: 'Outside of work',
     interests: ['Pokémon cards', 'LEGO', 'Travel', 'Sports'],
     statusTitle: 'Work in progress',
@@ -105,5 +123,14 @@ export const messages = {
     learningsTitle: 'What I learned',
     projectLinksLabel: 'Project links',
     projectPageTitle: 'Project details',
+    navigationLabel: 'Main navigation',
+    experienceNavLabel: 'Experience',
+    experienceTitle: 'Experience & background',
+    professionalExperienceTitle: 'Professional experience',
+    educationTitle: 'Education & development',
+    experiencePresent: 'present',
+    experienceCurrent: 'Current',
+    educationInProgress: 'In progress',
+    coordinatorSinceLabel: 'Coordination responsibilities since',
   },
 } satisfies Record<Locale, Messages>;

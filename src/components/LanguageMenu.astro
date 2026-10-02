@@ -2,6 +2,7 @@
 import { getRelativeLocaleUrl } from 'astro:i18n';
 import { messages, type Locale } from '../i18n/messages';
 import { getProjectUrl } from '../i18n/paths';
+import Icon from './Icon.astro';
 
 interface Props {
   locale: Locale;
@@ -26,20 +27,7 @@ const availableLanguages = languages.filter(
     <span aria-hidden="true">{locale === 'it' ? '🇮🇹' : '🇬🇧'}</span>
     <span>{locale.toUpperCase()}</span>
 
-    <svg
-      class="language-menu__chevron"
-      width="14"
-      height="14"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      aria-hidden="true"
-    >
-      <path d="m6 9 6 6 6-6" />
-    </svg>
+    <Icon name="caret-down" size={14} class="language-menu__chevron" />
   </summary>
 
   <nav class="language-menu__panel" aria-label={t.languageLabel}>
