@@ -1,15 +1,15 @@
 ---
-import { getRelativeLocaleUrl } from 'astro:i18n';
 import { messages, type Locale } from '../i18n/messages';
-import { getProjectUrl } from '../i18n/paths';
+import { getPageUrl, getProjectUrl, type PageName } from '../i18n/paths';
 import Icon from './Icon.astro';
 
 interface Props {
   locale: Locale;
   projectSlug?: string;
+  pageName: PageName;
 }
 
-const { locale, projectSlug } = Astro.props;
+const { locale, projectSlug, pageName } = Astro.props;
 const t = messages[locale];
 
 const languages: { code: Locale; label: string }[] = [
@@ -36,7 +36,7 @@ const availableLanguages = languages.filter(
         href={
           projectSlug
             ? getProjectUrl(language.code, projectSlug)
-            : getRelativeLocaleUrl(language.code)
+            : getPageUrl(language.code, pageName)
         }
         lang={language.code}
         hreflang={language.code}
@@ -83,7 +83,7 @@ const availableLanguages = languages.filter(
     gap: 0.5rem;
     min-height: 2.75rem;
     padding: 0.5rem 0.75rem;
-    border: 1px solid var(--control-border);
+    border: 1px solid var(--border);
     border-radius: 999px;
     background: var(--surface);
     color: var(--text);

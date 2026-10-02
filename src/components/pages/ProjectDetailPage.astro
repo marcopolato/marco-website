@@ -1,9 +1,9 @@
 ---
 import { Image } from 'astro:assets';
-import type { Project } from '../data/projects';
-import { messages, type Locale } from '../i18n/messages';
-import { getHomeProjectsUrl } from '../i18n/paths';
-import BaseLayout from '../layouts/BaseLayout.astro';
+import type { Project } from '../../data/projects.ts';
+import { messages, type Locale } from '../../i18n/messages.ts';
+import { getPageUrl } from '../../i18n/paths.ts';
+import BaseLayout from '../../layouts/BaseLayout.astro';
 
 interface Props {
   project: Project;
@@ -28,7 +28,7 @@ const sections = [
   projectSlug={project.slug}
 >
   <article class="project-detail" aria-labelledby="project-title">
-    <a href={getHomeProjectsUrl(locale)}>{t.backToProjects}</a>
+    <a href={getPageUrl(locale, 'projects')}>{t.backToProjects}</a>
 
     <header class="project-intro">
       <h1 id="project-title">{project.title}</h1>
