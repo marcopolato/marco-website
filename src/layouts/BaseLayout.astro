@@ -6,6 +6,7 @@ import ThemeToggle from '../components/ThemeToggle.astro';
 import '../styles/global.css';
 import LanguageMenu from '../components/LanguageMenu.astro';
 import { getPageUrl, getHomeContactsUrl, type PageName } from '../i18n/paths';
+import Icon from '../components/Icon.astro';
 
 interface Props {
   locale: Locale;
@@ -67,7 +68,7 @@ const activePageName: PageName | undefined =
     </a>
     <header class="site-header container">
       <a class="brand" href={getPageUrl(locale, 'home')}>
-        <span class="brand__mark" aria-hidden="true"></span>
+        <Icon class="brand__icon" name="terminal-window" aria-hidden="true" />
         Marco Polato
       </a>
 
@@ -128,11 +129,8 @@ const activePageName: PageName | undefined =
     text-decoration: none;
   }
 
-  .brand__mark {
-    width: 0.75rem;
-    height: 0.75rem;
-    border-radius: 50%;
-    background: var(--brand);
+  .brand__icon {
+    color: var(--brand);
   }
 
   .header-controls {

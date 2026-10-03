@@ -2,6 +2,7 @@ export type Locale = 'it' | 'en';
 
 interface Messages {
   activitiesTitle: string;
+  backgroundAction: string;
   backToProjects: string;
   contactAction: string;
   contactsTitle: string;
@@ -14,6 +15,7 @@ interface Messages {
   experiencePresent: string;
   experienceTitle: string;
   experiencePageDescription: string;
+  exploreProjectsAction: string;
   heading: string;
   homeNavLabel: string;
   interests: string[];
@@ -25,6 +27,7 @@ interface Messages {
   objectiveTitle: string;
   pageMetaContentDescription: string;
   pageTitle: string;
+  portraitAlt: string;
   professionalExperienceTitle: string;
   projectCompleted: string;
   projectInProgress: string;
@@ -47,6 +50,7 @@ interface Messages {
 export const messages = {
   it: {
     activitiesTitle: 'Attività svolte e scelte tecniche',
+    backgroundAction: 'Il mio percorso',
     backToProjects: 'Torna ai progetti',
     contactAction: 'Contattami',
     contactsTitle: 'Contatti',
@@ -58,21 +62,23 @@ export const messages = {
     experiencePageDescription:
       'Il mio percorso nello sviluppo web e mobile, tra esperienza professionale, formazione e responsabilità di coordinamento.',
     experiencePresent: 'presente',
-    homeNavLabel: 'Home',
     experienceNavLabel: 'Esperienza',
     experienceTitle: 'Esperienza e percorso',
+    exploreProjectsAction: 'Esplora i progetti',
+    heading: 'Marco Polato',
+    homeNavLabel: 'Home',
     interests: ['Carte Pokémon', 'LEGO', 'Viaggi', 'Sport'],
     interestsTitle: 'Fuori dal lavoro',
     introduction:
-      'Sviluppo applicazioni web e mobile e, da gennaio 2026, coordino le attività di un team di due sviluppatori. Lavoro con il cliente per trasformare i requisiti in task, sprint e priorità di sviluppo.',
-    heading: 'Ciao, sono Marco.',
+      'Sviluppo applicazioni web e mobile. Lavoro con il cliente per chiarire requisiti e priorità e organizzo le attività del team.',
     languageLabel: 'Seleziona la lingua',
     learningsTitle: 'Cosa ho imparato',
     navigationLabel: 'Navigazione principale',
     objectiveTitle: 'Obiettivo',
-    pageTitle: 'Marco Polato | Sviluppatore software',
     pageMetaContentDescription:
       'Il portfolio di Marco: sviluppo software, coordinamento di progetti tech e passioni personali.',
+    pageTitle: 'Marco Polato | Sviluppatore software',
+    portraitAlt: 'Foto di Marco Polato',
     professionalExperienceTitle: 'Esperienza professionale',
     projectCompleted: 'Completato',
     projectInProgress: 'In sviluppo',
@@ -83,7 +89,7 @@ export const messages = {
     projectsDescription:
       'Una selezione dei progetti a cui ho lavorato e a cui sto lavorando.',
     projectsTitle: 'Progetti',
-    role: 'Sviluppatore software · Coordinamento progetti tech',
+    role: 'Software Developer, con responsabilità di coordinamento tecnico',
     skipToContent: 'Vai al contenuto',
     statusDescription:
       'Sto costruendo questo spazio per raccontare le mie esperienze, i miei progetti e quello che mi appassiona.',
@@ -95,6 +101,7 @@ export const messages = {
   },
   en: {
     activitiesTitle: 'Work done and technical decisions',
+    backgroundAction: 'My background',
     backToProjects: 'Back to projects',
     contactAction: 'Contact me',
     contactsTitle: 'Contacts',
@@ -108,12 +115,13 @@ export const messages = {
       'My background in web and mobile development, including professional experience, education and coordination responsibilities.',
     experiencePresent: 'present',
     experienceTitle: 'Experience & background',
-    heading: "Hi, I'm Marco.",
+    exploreProjectsAction: 'Explore projects',
+    heading: 'Marco Polato',
     homeNavLabel: 'Home',
     interests: ['Pokémon cards', 'LEGO', 'Travel', 'Sports'],
     interestsTitle: 'Outside of work',
     introduction:
-      'I develop web and mobile applications and, since January 2026, I have coordinated the activities of a team of two developers. I work with the client to transform requirements into tasks, sprints and development priorities.',
+      'I develop web and mobile applications. I work with the client to clarify requirements and priorities and organize the team’s activities.',
     languageLabel: 'Select language',
     learningsTitle: 'What I learned',
     navigationLabel: 'Main navigation',
@@ -121,6 +129,7 @@ export const messages = {
     pageMetaContentDescription:
       "Marco's portfolio: software development, tech project coordination and personal interests.",
     pageTitle: 'Marco Polato | Software developer',
+    portraitAlt: 'Picture of Marco Polato',
     professionalExperienceTitle: 'Professional experience',
     projectCompleted: 'Completed',
     projectInProgress: 'In progress',
@@ -131,7 +140,7 @@ export const messages = {
     projectsDescription:
       'A selection of the projects I have worked on and am currently working on.',
     projectsTitle: 'Projects',
-    role: 'Software developer · Tech project coordination',
+    role: 'Software Developer with technical coordination responsibilities',
     skipToContent: 'Skip to content',
     statusDescription:
       "I'm building this space to share my experience, my projects and the things I enjoy.",

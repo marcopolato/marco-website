@@ -2,6 +2,9 @@
 import { messages, type Locale } from '../../i18n/messages.ts';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ContactLinks from '../ContactLinks.astro';
+import { getPageUrl } from '../../i18n/paths.ts';
+import portrait from '../../assets/profile/marco.webp';
+import { Image } from 'astro:assets';
 
 interface Props {
   locale: Locale;
@@ -17,9 +20,39 @@ const t = messages[locale];
   description={t.pageMetaContentDescription}
 >
   <section class="hero" aria-labelledby="intro-title">
-    <p class="eyebrow">{t.role}</p>
-    <h1 id="intro-title">{t.heading}</h1>
-    <p class="introduction">{t.introduction}</p>
+    <div class="hero__content">
+      <h1 class="hero__title" id="intro-title">
+        {t.heading}
+      </h1>
+
+      <p class="hero__role">{t.role}</p>
+      <p class="introduction">{t.introduction}</p>
+
+      <div class="actions">
+        <a class="button button--primary" href={getPageUrl(locale, 'projects')}>
+          {t.exploreProjectsAction}
+        </a>
+
+        <a
+          class="button button--secondary"
+          href={getPageUrl(locale, 'experience')}
+        >
+          {t.backgroundAction}
+        </a>
+      </div>
+    </div>
+
+    <div class="hero__media">
+      <Image
+        src={portrait}
+        alt={t.portraitAlt}
+        width={768}
+        layout="constrained"
+        sizes="(min-width: 26rem) 384px, calc(100vw - 2rem)"
+        priority
+        class="hero__image"
+      />
+    </div>
   </section>
 
   <div class="info-grid">
@@ -31,11 +64,6 @@ const t = messages[locale];
         ))}
       </ul>
     </section>
-
-    <aside class="panel status" aria-labelledby="status-title">
-      <h2 id="status-title">{t.statusTitle}</h2>
-      <p>{t.statusDescription}</p>
-    </aside>
   </div>
 
   <section class="contacts" id="contacts" aria-labelledby="contacts-title">
@@ -46,51 +74,57 @@ const t = messages[locale];
 
 <style>
   .hero {
-    padding-block: clamp(3rem, 9vw, 7rem);
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    align-items: center;
+    gap: clamp(2rem, 5vw, 5rem);
+    padding-block: clamp(2.5rem, 7vw, 6rem);
   }
 
-  .eyebrow {
-    margin-bottom: 1.25rem;
-    color: var(--accent-text);
-    font-size: 0.875rem;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
+  .hero__content {
+    min-width: 0;
   }
 
-  h1 {
-    max-width: 15ch;
-    font-size: clamp(2.75rem, 8vw, 6rem);
+  .hero__title {
+    font-size: clamp(3rem, 7vw, 5.5rem);
     font-weight: 700;
+    line-height: 1.02;
     letter-spacing: -0.055em;
   }
 
-  .introduction {
-    max-width: 42rem;
-    margin-top: 1.75rem;
-    color: var(--text-muted);
+  .hero__role {
+    max-width: 42ch;
+    margin-top: 1.25rem;
+    color: var(--accent-text);
     font-size: clamp(1.125rem, 2vw, 1.375rem);
+    font-weight: 500;
+  }
+
+  .introduction {
+    max-width: 42ch;
+    margin-top: 1.25rem;
+    color: var(--text-muted);
+    font-size: clamp(1rem, 1.5vw, 1.25rem);
   }
 
   .actions {
     display: flex;
     flex-wrap: wrap;
-    gap: 1rem;
-  }
-
-  .actions {
-    margin-top: 2rem;
+    gap: 0.75rem;
+    margin-top: 1.75rem;
   }
 
   .button {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    max-width: 100%;
     min-height: 3rem;
     padding: 0.75rem 1.25rem;
     border: 1px solid var(--border);
     border-radius: 999px;
     font-weight: 600;
+    text-align: center;
     text-decoration: none;
   }
 
@@ -107,6 +141,26 @@ const t = messages[locale];
 
   .button:hover {
     text-decoration: underline;
+  }
+
+  .hero__media {
+    width: min(100%, 24rem);
+    min-width: 0;
+    aspect-ratio: 4 / 5;
+    justify-self: center;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    border-radius: calc(var(--radius) * 1.5);
+    background: var(--surface);
+    color: var(--text-muted);
+  }
+
+  .hero__image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
   }
 
   .info-grid {
@@ -144,24 +198,29 @@ const t = messages[locale];
     color: var(--text-muted);
   }
 
-  .status {
-    border-top: 3px solid var(--brand);
-  }
-
-  .status p {
-    margin-top: 1rem;
-    color: var(--text-muted);
-  }
-
   .contacts {
-    margin-top: 3rem;
-    padding-top: 2rem;
-    border-top: 1px solid var(--border);
+    margin-top: 1.5rem;
+    scroll-margin-top: 2rem;
+  }
+
+  .contacts__title {
+    color: var(--text-muted);
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0;
   }
 
   @media (min-width: 48rem) {
     .info-grid {
       grid-template-columns: 1fr 1fr;
+    }
+
+    .hero {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 24rem);
+    }
+
+    .hero__media {
+      justify-self: end;
     }
   }
 </style>
