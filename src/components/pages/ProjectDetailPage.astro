@@ -4,6 +4,7 @@ import type { Project } from '../../data/projects.ts';
 import { messages, type Locale } from '../../i18n/messages.ts';
 import { getPageUrl } from '../../i18n/paths.ts';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import Chip from '../Chip.astro';
 
 interface Props {
   project: Project;
@@ -55,9 +56,11 @@ const sections = [
       <div>
         <dt>{t.technologiesLabel}</dt>
         <dd>
-          <ul class="technologies">
+          <ul class="chip-list" role="list">
             {project.technologies.map((technology) => (
-              <li>{technology}</li>
+              <li>
+                <Chip>{technology}</Chip>
+              </li>
             ))}
           </ul>
         </dd>
@@ -148,22 +151,6 @@ const sections = [
   dd {
     margin: 0;
     color: var(--text-muted);
-  }
-
-  .technologies {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-
-  .technologies li {
-    padding: 0.25rem 0.625rem;
-    border: 1px solid var(--border);
-    border-radius: 0.5rem;
-    font-size: 0.875rem;
   }
 
   section {
