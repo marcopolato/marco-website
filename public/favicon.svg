@@ -4,15 +4,15 @@
         width="64"
         height="64"
 >
-    <rect width="64" height="64" rx="14" fill="#111827" />
+    <rect width="64" height="64" rx="14" fill="#211d1a" />
 
     <path
-            fill="#FF9030"
+            fill="#efa88e"
             d="M8 46V18h6l7 12 7-12h6v28h-6V30l-7 11-7-11v16Z"
     />
 
     <path
-            fill="#FF9030"
+            fill="#efa88e"
             fill-rule="evenodd"
             d="M39 46V18h7c7 0 11 4 11 10s-4 10-11 10h-1v8h-6Zm6-22v8h1c3 0 5-1 5-4s-2-4-5-4h-1Z"
     />
