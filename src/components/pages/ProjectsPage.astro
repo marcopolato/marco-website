@@ -23,7 +23,7 @@ const t = messages[locale];
       <p>{t.projectsDescription}</p>
     </header>
 
-    <ul class="projects-grid" role="list">
+    <ul class="projects-list" role="list">
       {projects.map((project) => (
         <li>
           <ProjectCard project={project} locale={locale} />
@@ -54,22 +54,9 @@ const t = messages[locale];
     font-size: clamp(1.125rem, 2vw, 1.375rem);
   }
 
-  .projects-grid {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr);
-    gap: 1.5rem;
+  .projects-list {
     margin: 0;
     padding: 0;
     list-style: none;
-  }
-
-  .projects-grid > li {
-    min-width: 0;
-  }
-
-  @media (min-width: 48rem) {
-    .projects-grid {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
   }
 </style>

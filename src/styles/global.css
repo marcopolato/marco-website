@@ -1,40 +1,4 @@
 :root {
-  /* Identity colors */
-  --brand: #ff9030;
-  --ink: #111827;
-
-  /* Roles colors */
-  --page: var(--ink);
-  --surface: #1f2937;
-  --surface-muted: #273449;
-  --text: #f9fafb;
-  --text-muted: #cbd5e1;
-  --border: #374151;
-  --accent-text: var(--brand);
-  --on-brand: var(--ink);
-  --glow: rgb(255 144 48 / 0.12);
-
-  --font-body: var(--font-inter, ui-sans-serif), system-ui, sans-serif;
-  --content-width: 72rem;
-  --radius: 1.25rem;
-
-  color-scheme: dark;
-}
-
-:root[data-theme='light'] {
-  --page: #f8fafc;
-  --surface: #ffffff;
-  --surface-muted: #f1f5f9;
-  --text: var(--ink);
-  --text-muted: #475569;
-  --border: #cbd5e1;
-  --accent-text: #9a3412;
-  --glow: rgb(255 144 48 / 0.08);
-
-  color-scheme: light;
-}
-
-:root[data-visual='editorial'] {
   --page: #211d1a;
   --surface: #2b2521;
   --surface-muted: #372e28;
@@ -45,9 +9,15 @@
   --brand: #efa88e;
   --accent-text: var(--brand);
   --on-brand: #261913;
+
+  --font-body: var(--font-inter, ui-sans-serif), system-ui, sans-serif;
+  --content-width: 72rem;
+  --radius: 1.25rem;
+
+  color-scheme: dark;
 }
 
-:root[data-visual='editorial'][data-theme='light'] {
+:root[data-theme='light'] {
   --page: #f6f1e8;
   --surface: #fbf7f0;
   --surface-muted: #efe5d9;
@@ -57,10 +27,8 @@
   --rule: #d8ccbf;
   --brand: #963f2c;
   --on-brand: #fff9f2;
-}
 
-:root[data-visual='editorial'] body {
-  background-image: none;
+  color-scheme: light;
 }
 
 *,
@@ -78,11 +46,6 @@ body {
   min-width: 20rem;
   min-height: 100vh;
   background-color: var(--page);
-  background-image: radial-gradient(
-    ellipse at top right,
-    var(--glow),
-    transparent 45rem
-  );
   color: var(--text);
   font-family: var(--font-body);
   line-height: 1.6;
