@@ -6,7 +6,7 @@ The portfolio presents Marco Polato's web and mobile development experience, tec
 
 ## Visual direction
 
-The [Astro Portfolio template](https://astro.build/themes/details/portfolio/) remains a reference for typography and spacing. The site uses a warm editorial palette: ivory and terracotta in light mode, warm charcoal and a lighter terracotta accent in dark mode. Inter is the primary typeface, with Source Serif 4 italic reserved for emphasis in the homepage hero. Show one featured project before personal interests. In the project listing, give each project a full row with text before the cover image on narrow screens. Use the same technology chips wherever project technologies are shown.
+The [Astro Portfolio template](https://astro.build/themes/details/portfolio/) remains a reference for typography and spacing. The site uses a warm editorial palette: ivory and terracotta in light mode, warm charcoal and a lighter terracotta accent in dark mode. Inter is the primary typeface, with Source Serif 4 italic reserved for emphasis in the homepage hero. Show one featured project before personal interests. In the project listing, give each project a full row with text before the cover image on narrow screens. Use the shared Chip.astro component for non-interactive labels, including project technologies. Use .chip-list when those labels form a list.
 Present professional experience and education as separate timelines, with dates beside each entry on wide screens and above it on narrow screens.
 
 ## Languages and navigation
