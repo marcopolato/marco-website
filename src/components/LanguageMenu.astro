@@ -62,6 +62,16 @@ const availableLanguages = languages.filter(
       }
     });
 
+    menu.addEventListener('focusout', (event) => {
+      if (
+        menu.open &&
+        event.relatedTarget instanceof Node &&
+        !menu.contains(event.relatedTarget)
+      ) {
+        menu.open = false;
+      }
+    });
+
     menu.addEventListener('keydown', (event) => {
       if (event.key === 'Escape' && menu.open) {
         event.preventDefault();
@@ -99,6 +109,11 @@ const availableLanguages = languages.filter(
 
   summary:hover {
     border-color: var(--accent-text);
+  }
+
+  .language-menu[open] > summary {
+    border-color: var(--accent-text);
+    background: var(--surface-muted);
   }
 
   .language-menu[open] .language-menu__chevron {
