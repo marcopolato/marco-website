@@ -19,5 +19,14 @@ export default defineConfig({
       styles: ['normal'],
       subsets: ['latin'],
     },
+    {
+      name: 'Source Serif 4',
+      provider: fontProviders.fontsource(),
+      cssVariable: '--font-source-serif',
+      weights: [500],
+      styles: ['italic'],
+      subsets: ['latin'],
+      fallbacks: ['Georgia', 'serif'],
+    },
   ],
 });

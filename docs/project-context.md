@@ -4,6 +4,8 @@
 
 The portfolio presents Marco Polato's web and mobile development experience, technical coordination responsibilities, education, projects, and interests. Describe real contributions. Keep the homepage concise and give professional experience and projects dedicated pages.
 
+The homepage introduces a warm editorial direction: ivory and terracotta in light mode, warm charcoal and a lighter terracotta accent in dark mode. Inter remains the primary typeface, with Source Serif 4 italic reserved for emphasis in the hero. Show one featured project before personal interests. Evaluate this direction on the homepage before extending it to other pages.
+
 ## Visual direction
 
 The [Astro Portfolio template](https://astro.build/themes/details/portfolio/) and its [preview](https://preview.astro.new/portfolio/) are references for typography, spacing, and rounded surfaces. The current design uses Inter, orange as the primary accent, Phosphor icons, and shared CSS tokens for light and dark themes. Revisit these choices when a proposal improves hierarchy, readability, or distinctiveness. Keep the result coherent across pages, languages, and themes.

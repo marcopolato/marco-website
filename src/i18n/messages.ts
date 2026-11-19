@@ -16,7 +16,9 @@ interface Messages {
   experienceTitle: string;
   experiencePageDescription: string;
   exploreProjectsAction: string;
-  heading: string;
+  featuredProjectTitle: string;
+  heroTitle: string;
+  heroTitleAccent: string;
   homeNavLabel: string;
   interests: string[];
   interestsTitle: string;
@@ -37,7 +39,6 @@ interface Messages {
   projectStatusLabel: string;
   projectsDescription: string;
   projectsTitle: string;
-  role: string;
   skipToContent: string;
   statusDescription: string;
   statusTitle: string;
@@ -65,12 +66,14 @@ export const messages = {
     experienceNavLabel: 'Esperienza',
     experienceTitle: 'Esperienza e percorso',
     exploreProjectsAction: 'Esplora i progetti',
-    heading: 'Marco Polato',
+    featuredProjectTitle: 'Progetto in evidenza',
+    heroTitle: 'Sviluppo applicazioni',
+    heroTitleAccent: 'web e mobile.',
     homeNavLabel: 'Home',
     interests: ['Carte Pokémon', 'LEGO', 'Viaggi', 'Sport'],
     interestsTitle: 'Fuori dal lavoro',
     introduction:
-      'Sviluppo applicazioni web e mobile. Lavoro con il cliente per chiarire requisiti e priorità e organizzo le attività del team.',
+      'Lavoro con il cliente per chiarire requisiti e priorità e organizzo le attività del team.',
     languageLabel: 'Seleziona la lingua',
     learningsTitle: 'Cosa ho imparato',
     navigationLabel: 'Navigazione principale',
@@ -89,7 +92,6 @@ export const messages = {
     projectsDescription:
       'Una selezione dei progetti a cui ho lavorato e a cui sto lavorando.',
     projectsTitle: 'Progetti',
-    role: 'Software Developer, con responsabilità di coordinamento tecnico',
     skipToContent: 'Vai al contenuto',
     statusDescription:
       'Sto costruendo questo spazio per raccontare le mie esperienze, i miei progetti e quello che mi appassiona.',
@@ -116,12 +118,14 @@ export const messages = {
     experiencePresent: 'present',
     experienceTitle: 'Experience & background',
     exploreProjectsAction: 'Explore projects',
-    heading: 'Marco Polato',
+    featuredProjectTitle: 'Featured project',
+    heroTitle: 'I build',
+    heroTitleAccent: 'web and mobile apps.',
     homeNavLabel: 'Home',
     interests: ['Pokémon cards', 'LEGO', 'Travel', 'Sports'],
     interestsTitle: 'Outside of work',
     introduction:
-      'I develop web and mobile applications. I work with the client to clarify requirements and priorities and organize the team’s activities.',
+      'I work with clients to clarify requirements and priorities and organize the team’s work.',
     languageLabel: 'Select language',
     learningsTitle: 'What I learned',
     navigationLabel: 'Main navigation',
@@ -140,7 +144,6 @@ export const messages = {
     projectsDescription:
       'A selection of the projects I have worked on and am currently working on.',
     projectsTitle: 'Projects',
-    role: 'Software Developer with technical coordination responsibilities',
     skipToContent: 'Skip to content',
     statusDescription:
       "I'm building this space to share my experience, my projects and the things I enjoy.",

@@ -34,6 +34,35 @@
   color-scheme: light;
 }
 
+:root[data-visual='editorial'] {
+  --page: #211d1a;
+  --surface: #2b2521;
+  --surface-muted: #372e28;
+  --text: #f6efe7;
+  --text-muted: #cbbdb0;
+  --border: #79695e;
+  --rule: #453a32;
+  --brand: #efa88e;
+  --accent-text: var(--brand);
+  --on-brand: #261913;
+}
+
+:root[data-visual='editorial'][data-theme='light'] {
+  --page: #f6f1e8;
+  --surface: #fbf7f0;
+  --surface-muted: #efe5d9;
+  --text: #25211d;
+  --text-muted: #5c5249;
+  --border: #8f7e6d;
+  --rule: #d8ccbf;
+  --brand: #963f2c;
+  --on-brand: #fff9f2;
+}
+
+:root[data-visual='editorial'] body {
+  background-image: none;
+}
+
 *,
 *::before,
 *::after {
