@@ -1,0 +1,34 @@
+---
+import { Image } from 'astro:assets';
+import type { ProjectLogoAsset } from '../data/projects';
+
+interface Props {
+  src: ProjectLogoAsset;
+  width: number;
+  class?: string;
+  loading?: 'lazy' | 'eager';
+}
+
+const { src, width, loading = 'lazy', ...attributes } = Astro.props;
+---
+
+{typeof src === 'string' ? (
+  <img
+    src={src}
+    alt=""
+    width={width}
+    height={width}
+    loading={loading}
+    decoding="async"
+    {...attributes}
+  />
+) : (
+  <Image
+    src={src}
+    alt=""
+    width={Math.min(src.width, width)}
+    format="webp"
+    loading={loading}
+    {...attributes}
+  />
+)}

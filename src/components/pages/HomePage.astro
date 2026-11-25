@@ -60,7 +60,7 @@ const featuredProject = projects.find(
 
       <article class="featured__project" aria-labelledby="featured-name">
         <div>
-          <h3 id="featured-name">{featuredProject.title}</h3>
+          <h3 id="featured-name">{featuredProject.content[locale].title}</h3>
           <p class="featured__status">
             {featuredProject.status === 'in-progress'
               ? t.projectInProgress
