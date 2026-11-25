@@ -49,29 +49,27 @@ const headingId = `experience-${item.id}`;
         {isEducation ? t.educationInProgress : t.experienceCurrent}
       </p>
     )}
-    {item.kind === 'professional' && (
-      <>
-        <p class="experience-item__description">
-          {item.content[locale].description}
-        </p>
-
-        {item.coordinatorSince && item.addressedPoints && (
-          <div class="coordination">
-            <h4>
-              {t.coordinatorSinceLabel}{' '}
-              <time datetime={item.coordinatorSince}>
-                {formatExperienceDate(item.coordinatorSince, locale)}
-              </time>
-            </h4>
-            <ul>
-              {item.addressedPoints[locale].map((point) => (
-                <li>{point}</li>
-              ))}
-            </ul>
-          </div>
-        )}
-      </>
+    {content.description && (
+      <p class="experience-item__description">{content.description}</p>
     )}
+
+    {item.kind === 'professional' &&
+      item.coordinatorSince &&
+      item.addressedPoints && (
+        <div class="coordination">
+          <h4>
+            {t.coordinatorSinceLabel}{' '}
+            <time datetime={item.coordinatorSince}>
+              {formatExperienceDate(item.coordinatorSince, locale)}
+            </time>
+          </h4>
+          <ul>
+            {item.addressedPoints[locale].map((point) => (
+              <li>{point}</li>
+            ))}
+          </ul>
+        </div>
+      )}
   </article>
 </li>
 

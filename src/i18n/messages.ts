@@ -33,6 +33,7 @@ interface Messages {
   professionalExperienceTitle: string;
   projectCompleted: string;
   projectInProgress: string;
+  projectGalleryTitle: string;
   projectLinksLabel: string;
   projectPageTitle: string;
   projectRoleLabel: string;
@@ -85,6 +86,7 @@ export const messages = {
     professionalExperienceTitle: 'Esperienza professionale',
     projectCompleted: 'Completato',
     projectInProgress: 'In sviluppo',
+    projectGalleryTitle: 'Anteprime dell’interfaccia',
     projectLinksLabel: 'Collegamenti del progetto',
     projectPageTitle: 'Dettaglio progetto',
     projectRoleLabel: 'Il mio contributo',
@@ -137,6 +139,7 @@ export const messages = {
     professionalExperienceTitle: 'Professional experience',
     projectCompleted: 'Completed',
     projectInProgress: 'In progress',
+    projectGalleryTitle: 'Interface previews',
     projectLinksLabel: 'Project links',
     projectPageTitle: 'Project details',
     projectRoleLabel: 'My contribution',

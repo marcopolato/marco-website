@@ -42,7 +42,7 @@ export interface ProfessionalExperience extends ExperienceEntry {
 
 export interface EducationEntry extends ExperienceEntry {
   kind: 'education';
-  content: Record<Locale, { title: string }>;
+  content: Record<Locale, { title: string; description?: string }>;
 }
 
 // Most recent first, independently of the localized labels.
@@ -148,8 +148,16 @@ export const education = [
       ongoing: true,
     },
     content: {
-      it: { title: 'Google Project Management Certificate' },
-      en: { title: 'Google Project Management Certificate' },
+      it: {
+        title: 'Google Project Management Certificate',
+        description:
+          'Ho completato i corsi sui fondamenti del project management e sull’avvio di un progetto, dalla definizione di obiettivi e ambito all’analisi degli stakeholder.',
+      },
+      en: {
+        title: 'Google Project Management Certificate',
+        description:
+          'I completed the courses on project management fundamentals and project initiation, from defining project goals and scope to analyzing stakeholders.',
+      },
     },
   },
   {
@@ -166,9 +174,13 @@ export const education = [
     content: {
       it: {
         title: 'Diploma tecnico superiore in sviluppo di applicazioni mobile',
+        description:
+          'Formazione nello sviluppo di app native per Android e iOS e di app multipiattaforma con Flutter. Il percorso ha incluso anche sviluppo web, basi di dati, lavoro in team con Scrum e pianificazione con WBS, project charter e diagrammi di Gantt.',
       },
       en: {
         title: 'Higher Technical Diploma in Mobile Application Development',
+        description:
+          'Training in native Android and iOS app development and cross-platform development with Flutter. The program also covered web development, databases, teamwork with Scrum, and project planning using work breakdown structures (WBS), project charters, and Gantt charts.',
       },
     },
   },
