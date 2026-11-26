@@ -1,16 +1,23 @@
 <!-- Pure JavaScript: executed in head before the page is rendered. -->
 <script is:inline>
   (() => {
-    let theme = 'dark';
+    const root = document.documentElement;
 
-    try {
-      if (localStorage.getItem('marco-theme') === 'light') {
-        theme = 'light';
+    function restoreTheme() {
+      try {
+        const savedTheme = localStorage.getItem('marco-theme');
+        root.dataset.theme = savedTheme === 'light' ? 'light' : 'dark';
+      } catch (error) {
+        console.error('Error accessing localStorage for theme:', error);
       }
-    } catch (e) {
-      console.error('Error accessing localStorage for theme:', e);
     }
 
-    document.documentElement.dataset.theme = theme;
+    restoreTheme();
+
+    window.addEventListener('pageshow', (event) => {
+      if (event.persisted) {
+        restoreTheme();
+      }
+    });
   })();
 </script>
