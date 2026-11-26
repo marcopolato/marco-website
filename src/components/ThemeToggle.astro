@@ -54,8 +54,15 @@ const t = messages[locale];
   }
 
   updateButtonAriaCheckedValue();
+
   if (themeToggleButton) {
     themeToggleButton.hidden = false;
+
+    window.addEventListener('pageshow', (event) => {
+      if (event.persisted) {
+        updateButtonAriaCheckedValue();
+      }
+    });
   }
 </script>
 
